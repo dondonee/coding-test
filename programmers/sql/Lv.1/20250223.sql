@@ -1,0 +1,42 @@
+/* 1. 가장 비싼 상품 구하기 */
+-- MySQL, Oracle
+SELECT MAX(PRICE) AS MAX_PRICE
+FROM PRODUCT;
+
+/* 2. 여러 기준으로 정렬하기 */
+-- MySQL, Oracle
+SELECT ANIMAL_ID, NAME, DATETIME
+FROM ANIMAL_INS
+ORDER BY NAME, DATETIME DESC;
+
+
+/* 3. 상위 n개 레코드 */
+-- 3-1. MySQL
+SELECT NAME
+FROM ANIMAL_INS
+ORDER BY DATETIME ASC
+LIMIT 1;    -- TOP 1 보다 LIMIT 1이 편리한 것 같다.
+
+-- 3-2. Oracle
+SELECT *
+FROM(
+    SELECT NAME
+    FROM ANIMAL_INS
+    ORDER BY DATETIME ASC
+    )
+WHERE ROWNUM = 1;    -- Oracle은 LIMIT 키워드가 없다.
+
+
+/* 4. 동물의 아이디와 이름 */
+-- MySQL, Oracle
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID;
+
+
+/* 5. 나이 정보가 없는 회원 수 구하기 */
+-- MySQL, Oracle
+SELECT COUNT(*)
+FROM USER_INFO
+WHERE AGE IS NULL;
+
